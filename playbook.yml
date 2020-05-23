@@ -1,0 +1,15 @@
+---
+ - name: Configuration files
+   hosts: local
+   become: true
+   gather_facts: no
+   tasks:
+     - name: Installing httpd package
+       yum:
+          name: httpd
+          state: present
+     - name: Starting service and enabling
+       service:
+            name: httpd
+            state: started
+            enabled: yes
